@@ -1,15 +1,15 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    String name = User.Identity.Name;
 }
 
 <main>
     <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">Main Page</h1>
-        
- 
+        @{<h1 id="title">Welcome @name </h1> }
     </section>
 
     <div class="row">
+
         
     </div>
 </main>
