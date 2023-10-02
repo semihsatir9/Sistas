@@ -10,7 +10,6 @@ namespace Sistas.Controllers
     {
 
         // Main page render
-        [Authorize]
         public ActionResult Index()
         {
             return View();
