@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    // Set it as true then check to see if the auth cookie is formed.
+    bool isLoggedIn = true;
+    if (string.IsNullOrEmpty(User.Identity.Name))
+    {
+        isLoggedIn = false;
+    }
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -17,7 +26,16 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    @{
+                        if (isLoggedIn)
+                        {
+                            <li>@Html.ActionLink("Logout", "Signout", "Auth", new { area = "" }, new { @class = "nav-link" })</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Login", "Login", "Auth", new { area = "" }, new { @class = "nav-link" })</li>
+                        }
+                    }
                 </ul>
             </div>
         </div>
