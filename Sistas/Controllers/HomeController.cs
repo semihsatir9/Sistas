@@ -21,6 +21,7 @@ namespace Sistas.Controllers
             
             sistasEntities context = new sistasEntities();
             user table = context.users.FirstOrDefault(x => x.username == User.Identity.Name);
+            //Test
 
             return View();
         }
