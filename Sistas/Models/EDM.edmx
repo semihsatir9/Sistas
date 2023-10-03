@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sistasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sistasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="userid" />
@@ -17,11 +17,21 @@
           <Property Name="data3" Type="varchar" MaxLength="50" />
           <Property Name="data4" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="userdata">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data1" Type="varchar" MaxLength="50" />
+          <Property Name="data2" Type="varchar" MaxLength="50" />
+          <Property Name="data3" Type="varchar" MaxLength="50" />
+          <Property Name="data4" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityContainer Name="sistasModelStoreContainer">
           <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userdata" EntityType="Self.userdata" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sistasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -39,7 +49,18 @@
         </EntityType>
         <EntityContainer Name="sistasEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="userdatas" EntityType="sistasModel.userdata" />
         </EntityContainer>
+        <EntityType Name="userdata">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="data4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -56,6 +77,17 @@
                 <ScalarProperty Name="data2" ColumnName="data2" />
                 <ScalarProperty Name="data3" ColumnName="data3" />
                 <ScalarProperty Name="data4" ColumnName="data4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userdatas">
+            <EntityTypeMapping TypeName="sistasModel.userdata">
+              <MappingFragment StoreEntitySet="userdata">
+                <ScalarProperty Name="data4" ColumnName="data4" />
+                <ScalarProperty Name="data3" ColumnName="data3" />
+                <ScalarProperty Name="data2" ColumnName="data2" />
+                <ScalarProperty Name="data1" ColumnName="data1" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

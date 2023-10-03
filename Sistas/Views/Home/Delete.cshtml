@@ -1,0 +1,57 @@
+﻿@model Sistas.Models.userdata
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>user</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data4)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Display")
+        </div>
+    }
+</div>
