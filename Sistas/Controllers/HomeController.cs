@@ -105,10 +105,13 @@ namespace Sistas.Controllers
 
             context.SaveChanges();
 
-            RedirectToAction("Display");
-
             return RedirectToAction("Display");
 
+        }
+
+        public ActionResult Refresh()
+        {
+            return RedirectToAction("Display");
         }
     }
 }
