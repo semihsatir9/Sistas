@@ -53,6 +53,7 @@ namespace Sistas.Controllers
         {
 
             var obj = context.userdatas.Find(id);
+            var obj2 = context.userdatas.Find(id).id;
             return View(obj);
 
 
@@ -62,14 +63,31 @@ namespace Sistas.Controllers
         [HttpPost]
         public ActionResult Edit(userdata usertable)
         {
-            context.Entry(usertable).State = System.Data.Entity.EntityState.Modified;
-            context.SaveChanges();
-            
-            return RedirectToAction("Display");
-                
+            using (sistasEntities entities = new sistasEntities())
+            {
+                userdata userdata = (from c in entities.userdatas
+                                            where c.id == usertable.id
+                                            select c).FirstOrDefault();
 
+                if (userdata != null)
+                {
+                    userdata.data1 = usertable.data1;
+                    userdata.data2 = usertable.data2;
+                    userdata.data3 = usertable.data3;
+                    userdata.data4 = usertable.data4;
+                    entities.SaveChanges();
+                    return Json(true);
+                }
+            }
 
+            return Json(false);
+
+           
         }
+
+        
+
+    
 
         [HttpGet]
         public ActionResult Delete(int id)

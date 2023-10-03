@@ -2,61 +2,60 @@
 
 @{
     ViewBag.Title = "Edit";
+    Html.HiddenFor(model => model.id);
 }
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>user</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.id)
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.data1, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.data1, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.data1, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.data2, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.data2, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.data2, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.data3, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.data3, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.data3, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.data4, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.data4, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.data4, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Display")
-</div>
+<body>
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td style="width: 60px">
+                Data1<br />
+                <input type="text" id="data1" style="width:50px" />
+            </td>
+            <td style="width: 150px">
+                Data2<br />
+                <input type="text" id="data2" style="width:140px" />
+            </td>
+            <td style="width: 150px">
+                Data3:<br />
+                <input type="text" id="data3" style="width:140px" />
+            </td>
+            <td style="width: 150px">
+                Data4:<br />
+                <input type="text" id="data4" style="width:140px" />
+            </td>
+            <td style="width: 200px">
+                <br />
+                <input type="button" id="btnUpdate" value="Update" />
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script type="text/javascript">
+        $("body").on("click", "#btnUpdate", function () {
+            var jsonresult = {};
+            jsonresult.data1 = $("#data1").val();
+            jsonresult.data2 = $("#data2").val();
+            jsonresult.data3 = $("#data3").val();
+            jsonresult.data4 = $("#data4").val();
+            jsonresult.id = @Model.id;
+            $.ajax({
+                type: "POST",
+                url: "/Home/Edit",
+                data: JSON.stringify(jsonresult),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (r) {
+                    if (r) {
+                        alert("Edit success.");
+                    } else {
+                        alert("fail.");
+                    }
+                }
+            });
+        });
+    </script>
+</body>
