@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.Xml;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
@@ -109,9 +110,6 @@ namespace Sistas.Controllers
 
         }
 
-        public ActionResult Refresh()
-        {
-            return RedirectToAction("Display");
-        }
+       
     }
 }

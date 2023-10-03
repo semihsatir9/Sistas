@@ -32,7 +32,7 @@ namespace Sistas.Controllers
             if (userExist)
             {
                 FormsAuthentication.SetAuthCookie(u.username, false);
-                return RedirectToAction("Display", "Home");
+                return RedirectToAction("Index", "Home");
             }
 
 

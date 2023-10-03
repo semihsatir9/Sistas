@@ -6,7 +6,7 @@
 
 <h2>Display</h2>
 
-<input type="button" id="refreshButton" value="Refresh" />
+<input type="button" id="refreshButton" value="Refresh" onClick="window.location.reload();"/>
 <table class="table">
     <tr>
 
@@ -54,23 +54,5 @@
 
 
 
-<script>
-    $(document).ready(function () {
-        $("#refreshButton").click(function () {
-
-            $.ajax({
-                url: "/HomeController/Refresh", 
-                type: "GET",
-                success: function (data) {
-                    // Trying a forced refresh on the screen
-                    
-                    location.reload();
-                },
-                error: function (xhr, textStatus, errorThrown) {
-                    
-                }
-            });
-        });
-    });
-</script>
+    
 
