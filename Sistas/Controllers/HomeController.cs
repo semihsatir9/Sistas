@@ -51,9 +51,8 @@ namespace Sistas.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-
+            // For exeption handling and debugging
             var obj = context.userdatas.Find(id);
-            var obj2 = context.userdatas.Find(id).id;
             return View(obj);
 
 
@@ -68,7 +67,7 @@ namespace Sistas.Controllers
                 userdata userdata = (from c in entities.userdatas
                                             where c.id == usertable.id
                                             select c).FirstOrDefault();
-
+                // Updating all data through AJAX module
                 if (userdata != null)
                 {
                     userdata.data1 = usertable.data1;
@@ -95,9 +94,6 @@ namespace Sistas.Controllers
             
             var obj = context.userdatas.Find(id);
             return View(obj);
-
-
-
         }
 
         [HttpPost, ActionName("Delete")]
@@ -109,9 +105,9 @@ namespace Sistas.Controllers
 
             context.SaveChanges();
 
+            RedirectToAction("Display");
+
             return RedirectToAction("Display");
-
-
 
         }
     }
