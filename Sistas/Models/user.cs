@@ -17,9 +17,5 @@ namespace Sistas.Models
         public int userid { get; set; }
         public string username { get; set; }
         public string userpassword { get; set; }
-        public string data1 { get; set; }
-        public string data2 { get; set; }
-        public string data3 { get; set; }
-        public string data4 { get; set; }
     }
 }

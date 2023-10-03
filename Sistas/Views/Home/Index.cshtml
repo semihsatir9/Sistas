@@ -1,17 +1,17 @@
 ﻿@model Sistas.Models.userdata
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Add Data";
 }
 
-<h2>Index</h2>
+<h2>Add Data</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>user</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         

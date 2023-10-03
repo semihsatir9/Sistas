@@ -12,10 +12,6 @@
           <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="userpassword" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="data1" Type="varchar" MaxLength="50" />
-          <Property Name="data2" Type="varchar" MaxLength="50" />
-          <Property Name="data3" Type="varchar" MaxLength="50" />
-          <Property Name="data4" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="userdata">
           <Key>
@@ -42,10 +38,6 @@
           <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="userpassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="data1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="data2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="data3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="data4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="sistasEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="users" EntityType="Self.user" />
@@ -73,11 +65,7 @@
                 <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="userpassword" ColumnName="userpassword" />
-                <ScalarProperty Name="data1" ColumnName="data1" />
-                <ScalarProperty Name="data2" ColumnName="data2" />
-                <ScalarProperty Name="data3" ColumnName="data3" />
-                <ScalarProperty Name="data4" ColumnName="data4" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="userdatas">
